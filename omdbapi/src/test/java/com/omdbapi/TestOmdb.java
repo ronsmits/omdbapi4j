@@ -40,13 +40,19 @@ public class TestOmdb {
 	}
 	
 	@Test(expected=OmdbMovieNotFoundException.class)
-	public void testGetWithNotExisting() throws OmdbConnectionErrorException, OmdbSyntaxErrorException, OmdbMovieNotFoundException {
+	public void testGetWithNotExistingImdbId() throws OmdbConnectionErrorException, OmdbSyntaxErrorException, OmdbMovieNotFoundException {
 		new Omdb().getById("tt");
 	}
 	
 	@Test
-	public void testGet() throws OmdbConnectionErrorException, OmdbSyntaxErrorException, OmdbMovieNotFoundException {
+	public void testGetWithImdbId() throws OmdbConnectionErrorException, OmdbSyntaxErrorException, OmdbMovieNotFoundException {
 		RawMovie byId = new Omdb().getById("tt0083658");
 		assertEquals("tt0083658", byId.imdbId);
+	}
+	
+	@Test
+	public void testGetOneMovie() throws OmdbSyntaxErrorException, OmdbConnectionErrorException, OmdbMovieNotFoundException {
+		Movie movie = new Omdb().searchOneMovie("the brotherhood of war");
+		assertEquals("tt0386064", movie.getImdbId());
 	}
 }

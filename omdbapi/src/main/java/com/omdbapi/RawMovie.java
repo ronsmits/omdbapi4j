@@ -9,6 +9,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 class RawMovie {
 	
+	public String getTitle() {
+		return title;
+	}
+	public String getDirector() {
+		return director;
+	}
+	public String getPlot() {
+		return plot;
+	}
+	public String getRuntime() {
+		return runtime;
+	}
+	public String getRated() {
+		return rated;
+	}
+	public String getImdbId() {
+		return imdbId;
+	}
+	
 	@XmlElement(name = "Title")
 	protected String title;
 	@XmlElement(name = "Genre")

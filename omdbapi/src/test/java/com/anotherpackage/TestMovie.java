@@ -42,4 +42,10 @@ public class TestMovie {
 		float imdbRating = movie.getImdbRating();
 		assertEquals(imdbRating, 8.3f, 0);
 	}
+	
+	@Test public void testImdbVotes() {
+		long imdbVotes = movie.getImdbVotes();
+		assertEquals(279350, imdbVotes);
+	}
+	
 }
