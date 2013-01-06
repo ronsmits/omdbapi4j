@@ -30,7 +30,7 @@ class RestClient {
 	}
 
 	public String execute(HttpRequestBase request) throws IOException {
-		logger.fine("executing " + request.toString());
+		logger.info("executing " + request.toString());
 		final HttpClient client = new DefaultHttpClient();
 		final HttpResponse response = client.execute(request);
 
