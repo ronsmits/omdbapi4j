@@ -23,13 +23,7 @@ class RestClient {
 		return execute(new HttpGet(normalize(new URI(OMDBURL), path)));
 	}
 
-	public String execute(HttpEntity entity,
-			HttpEntityEnclosingRequestBase request) throws IOException {
-		request.setEntity(entity);
-		return execute(request);
-	}
-
-	public String execute(HttpRequestBase request) throws IOException {
+	private String execute(HttpRequestBase request) throws IOException {
 		logger.info("executing " + request.toString());
 		final HttpClient client = new DefaultHttpClient();
 		final HttpResponse response = client.execute(request);
@@ -45,7 +39,7 @@ class RestClient {
 		return message;
 	}
 
-	public static String asString(HttpResponse execute) throws IOException {
+	private static String asString(HttpResponse execute) throws IOException {
 		if (execute == null || execute.getEntity() == null)
 			return "";
 		final InputStream in = execute.getEntity().getContent();
@@ -56,11 +50,11 @@ class RestClient {
 		}
 	}
 	
-	public static URI normalize(URI uri, Object... path) {
+	private static URI normalize(URI uri, Object... path) {
         return URI.create(uri.toASCIIString() + "?" + join("&", path)).normalize();
     }
 
-    public static String join(String delimiter, Object... collection) {
+    private static String join(String delimiter, Object... collection) {
         if (collection.length == 0) {
             return "";
         }
