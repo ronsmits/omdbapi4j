@@ -20,7 +20,9 @@
 			<url>scp://shell.sourceforge.net/home/project-web/omdbapi4j/htdocs</url>
 		</site>
 	</distributionManagement>
-
+	<scm>
+		<developerConnection>scm:git:ssh://ronsmitsnl@git.code.sf.net/p/omdbapi4j/code</developerConnection>
+	</scm>
 	<dependencies>
 		<dependency>
 			<groupId>org.json</groupId>
