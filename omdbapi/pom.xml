@@ -13,7 +13,7 @@
 			<url>scp://shell.sourceforge.net/home/project-web/omdbapi4j</url>
 		</site>
 	</distributionManagement>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.json</groupId>
@@ -46,4 +46,26 @@
 			<version>2.1.2</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.2</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-ssh</artifactId>
+						<version>2.3</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<pushChanges>false</pushChanges>
+					<localCheckout>true</localCheckout>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
 </project>
