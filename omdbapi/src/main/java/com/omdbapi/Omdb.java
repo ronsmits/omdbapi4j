@@ -73,7 +73,11 @@ public class Omdb extends RestClient {
 		options.add("y="+String.valueOf(year));
 		return this;
 	}
-
+	
+	public Omdb fullPlot() {
+		options.add("plot=full");
+		return this;
+	}
 	public Omdb tomatoScore(){
 		//options.add("tomatoes=true");
 		return this;

@@ -1,5 +1,7 @@
 package com.omdbapi;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -8,7 +10,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
-public class SearchResult {
+public class SearchResult implements Serializable{
+	private static final long serialVersionUID = -2610565920993691973L;
+
 	private String title;
 	private String year;
 	private String imdbId;

@@ -1,5 +1,6 @@
 package com.omdbapi;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -12,7 +13,8 @@ import java.util.List;
  * @author ron
  *
  */
-public class Movie extends RawMovie {
+public class Movie extends RawMovie implements Serializable{
+	private static final long serialVersionUID = 1909376875052245393L;
 
 	public List<String> getGenres() {
 		return splitter(genre);

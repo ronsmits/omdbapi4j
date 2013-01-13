@@ -51,6 +51,11 @@ public class TestOmdb {
 	}
 	
 	@Test
+	public void testGetFullPlot() throws OmdbConnectionErrorException, OmdbSyntaxErrorException, OmdbMovieNotFoundException {
+		Movie movie = new Omdb().fullPlot().getById("tt0083658");
+		assertEquals("tt0083658", movie.imdbId);
+	}
+	@Test
 	public void testGetOneMovie() throws OmdbSyntaxErrorException, OmdbConnectionErrorException, OmdbMovieNotFoundException {
 		Movie movie = new Omdb().searchOneMovie("the brotherhood of war");
 		assertEquals("tt0386064", movie.getImdbId());
