@@ -107,6 +107,7 @@ public class Omdb extends RestClient {
 			throws JSONException, IOException, JsonParseException,
 			JsonMappingException {
 		Object searchresult = response.get("Search");
+		System.out.println(searchresult.toString());
 		List<SearchResult> results = mapper.readValue(searchresult.toString(), 
 				new TypeReference<List<SearchResult>>() {});
 		return results;

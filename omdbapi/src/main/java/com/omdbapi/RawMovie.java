@@ -27,7 +27,9 @@ class RawMovie {
 	public String getImdbId() {
 		return imdbId;
 	}
-	
+	public String getType(){
+		return type;
+	}
 	@XmlElement(name = "Title")
 	protected String title;
 	@XmlElement(name = "Genre")
@@ -56,4 +58,6 @@ class RawMovie {
 	protected String imdbVotes;
 	@XmlElement(name = "Response")
 	protected String response;
+	@XmlElement(name="Type")
+	protected String type;
 }

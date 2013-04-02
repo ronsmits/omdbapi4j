@@ -23,7 +23,7 @@ public class TestOmdb {
 	@Test
 	public void testForStarWars() throws OmdbMovieNotFoundException, OmdbConnectionErrorException, OmdbSyntaxErrorException {
 		List<SearchResult> results = new Omdb().search("Star wars");
-		assertEquals(5, results.size());
+		assertEquals(10, results.size());
 	}
 
 	@Test(expected=OmdbMovieNotFoundException.class)
