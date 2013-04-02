@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.omdbapi</groupId>
 	<artifactId>omdbapi</artifactId>
-	<version>0.3.0</version>
+	<version>0.3.1-SNAPSHOT</version>
 	<name>Open Movie Database API</name>
 	<description>Very thin wrapper around http://www.omdbapi.com</description>
 
@@ -21,7 +21,7 @@
 	</distributionManagement>
 	<scm>
 		<developerConnection>scm:git:ssh://ronsmitsnl@git.code.sf.net/p/omdbapi4j/code</developerConnection>
-	  <tag>omdbapi-0.3.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 	<dependencies>
 		<dependency>
