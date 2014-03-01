@@ -2,6 +2,7 @@ package com.omdbapi;
 
 import java.io.Serializable;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -16,7 +17,7 @@ public class SearchResult implements Serializable{
 	private String title;
 	private String year;
 	private String imdbId;
-	private String type;
+	private MovieType type;
 	
 	public String getTitle() {
 		return title;
@@ -38,11 +39,11 @@ public class SearchResult implements Serializable{
 	public void setImdbID(String imdbId) {
 		this.imdbId = imdbId;
 	}
-	public String getType() {
+	public MovieType getType() {
 		return type;
 	}
 	@XmlElement(name="Type")
-	public void setType(String type) {
+	public void setType(MovieType type) {
 		this.type = type;
 	}
 }

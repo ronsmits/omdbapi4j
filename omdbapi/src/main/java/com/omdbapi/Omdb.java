@@ -21,11 +21,13 @@ public class Omdb extends RestClient {
 	private final Logger logger = Logger.getLogger("omdb");
 	private List<String> options = new ArrayList<String>();
 	private ObjectMapper mapper = new ObjectMapper();
-	
+
+	private MovieType typeToRestrict;
+
 	public Omdb() {
 		mapper.registerModule(new JaxbAnnotationModule());
 	}
-	
+
 	public List<SearchResult> search(String searchString)
 			throws OmdbMovieNotFoundException, OmdbConnectionErrorException,
 			OmdbSyntaxErrorException {
@@ -33,7 +35,16 @@ public class Omdb extends RestClient {
 		try {
 			options.add("s=" + URLEncoder.encode(searchString, "UTF-8"));
 			JSONObject response = execute(searchString);
-			return getTheSearchResults(response);
+			List<SearchResult> results = getTheSearchResults(response);
+			List<SearchResult> toRemove = new ArrayList<SearchResult>();
+			if (typeToRestrict != null) {
+				for (SearchResult result : results) {
+					if (!result.getType().equals(typeToRestrict))
+						toRemove.add(result);
+				}
+			}
+			results.removeAll(toRemove);
+			return results;
 		} catch (IOException e) {
 			throw new OmdbConnectionErrorException(e.getMessage());
 		} catch (URISyntaxException e) {
@@ -43,20 +54,25 @@ public class Omdb extends RestClient {
 		}
 	}
 
-	public Movie getById(String id) throws OmdbConnectionErrorException, OmdbSyntaxErrorException, OmdbMovieNotFoundException {
-		options.add("i="+id);
+	public Movie getById(String id) throws OmdbConnectionErrorException,
+			OmdbSyntaxErrorException, OmdbMovieNotFoundException {
+		options.add("i=" + id);
 		return getOneMovie(id);
 	}
-	
-	public Movie searchOneMovie(String moviename) throws OmdbSyntaxErrorException, OmdbConnectionErrorException, OmdbMovieNotFoundException {
+
+	public Movie searchOneMovie(String moviename)
+			throws OmdbSyntaxErrorException, OmdbConnectionErrorException,
+			OmdbMovieNotFoundException {
 		try {
-			options.add("t="+URLEncoder.encode(moviename, "UTF-8"));
+			options.add("t=" + URLEncoder.encode(moviename, "UTF-8"));
 			return getOneMovie(moviename);
 		} catch (UnsupportedEncodingException e) {
 			throw new OmdbSyntaxErrorException(e.getMessage());
 		}
 	}
-	private Movie getOneMovie(String id) throws OmdbConnectionErrorException, OmdbSyntaxErrorException, OmdbMovieNotFoundException {
+
+	private Movie getOneMovie(String id) throws OmdbConnectionErrorException,
+			OmdbSyntaxErrorException, OmdbMovieNotFoundException {
 		try {
 			JSONObject executeResult = execute(id);
 			Movie movie = getFoundMovie(executeResult);
@@ -69,17 +85,24 @@ public class Omdb extends RestClient {
 			throw new OmdbSyntaxErrorException(e.getMessage());
 		}
 	}
+
 	public Omdb year(int year) {
-		options.add("y="+String.valueOf(year));
+		options.add("y=" + String.valueOf(year));
 		return this;
 	}
-	
+
+	public Omdb type(MovieType type) {
+		typeToRestrict = type;
+		return this;
+	}
+
 	public Omdb fullPlot() {
 		options.add("plot=full");
 		return this;
 	}
-	public Omdb tomatoScore(){
-		//options.add("tomatoes=true");
+
+	public Omdb tomatoScore() {
+		// options.add("tomatoes=true");
 		return this;
 	}
 
@@ -90,8 +113,10 @@ public class Omdb extends RestClient {
 		return response;
 	}
 
-	private Movie getFoundMovie(JSONObject executeResult) throws JsonParseException, JsonMappingException, IOException {
-		Movie fm = (Movie) mapper.readValue(executeResult.toString(), Movie.class);
+	private Movie getFoundMovie(JSONObject executeResult)
+			throws JsonParseException, JsonMappingException, IOException {
+		Movie fm = (Movie) mapper.readValue(executeResult.toString(),
+				Movie.class);
 		return fm;
 	}
 
@@ -108,8 +133,9 @@ public class Omdb extends RestClient {
 			JsonMappingException {
 		Object searchresult = response.get("Search");
 		System.out.println(searchresult.toString());
-		List<SearchResult> results = mapper.readValue(searchresult.toString(), 
-				new TypeReference<List<SearchResult>>() {});
+		List<SearchResult> results = mapper.readValue(searchresult.toString(),
+				new TypeReference<List<SearchResult>>() {
+				});
 		return results;
 	}
 

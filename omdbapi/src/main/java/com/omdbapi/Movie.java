@@ -35,9 +35,6 @@ public class Movie extends RawMovie implements Serializable{
 	public String getPoster() {
 		return poster;
 	}
-	public String getType(){
-		return type;
-	}
 	/**
 	 * Convenience method to split a string with ", " in it up to an array.
 	 * 

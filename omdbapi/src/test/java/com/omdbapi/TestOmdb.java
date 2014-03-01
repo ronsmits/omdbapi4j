@@ -33,7 +33,8 @@ public class TestOmdb {
 	
 	@Test
 	public void testFindBladeRunnerWithYear() throws OmdbMovieNotFoundException, OmdbConnectionErrorException, OmdbSyntaxErrorException {
-		List<SearchResult> search = new Omdb().year(1982).search("blade");
+		List<SearchResult> search = new Omdb().year(1982).type(MovieType.movie).search("blade runner");
+		System.out.println(search);
 		assertEquals(1, search.size());
 		assertEquals("Blade Runner", search.get(0).getTitle());
 		assertEquals("1982", search.get(0).getYear());
