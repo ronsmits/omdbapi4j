@@ -1,7 +1,6 @@
 package com.omdbapi;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Logger;
@@ -10,8 +9,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.ziplock.IO;
 
 class RestClient {
 	private static final String OMDBURL="http://www.omdbapi.com/";
@@ -38,14 +37,7 @@ class RestClient {
 	}
 
 	private static String asString(HttpResponse execute) throws IOException {
-		if (execute == null || execute.getEntity() == null)
-			return "";
-		final InputStream in = execute.getEntity().getContent();
-		try {
-			return IO.slurp(in);
-		} finally {
-			in.close();
-		}
+		return new BasicResponseHandler().handleResponse(execute);
 	}
 	
 	private static URI normalize(URI uri, Object... path) {
