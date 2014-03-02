@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.omdbapi</groupId>
 	<artifactId>omdbapi</artifactId>
-	<version>0.3.1</version>
+	<version>0.4.0</version>
 	<name>Open Movie Database API</name>
 	<description>Very thin wrapper around http://www.omdbapi.com</description>
 
@@ -33,11 +33,6 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.openejb</groupId>
-			<artifactId>ziplock</artifactId>
-			<version>1.5.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

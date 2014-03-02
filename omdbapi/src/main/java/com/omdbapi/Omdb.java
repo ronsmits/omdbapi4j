@@ -39,7 +39,7 @@ public class Omdb extends RestClient {
 			List<SearchResult> toRemove = new ArrayList<SearchResult>();
 			if (typeToRestrict != null) {
 				for (SearchResult result : results) {
-					if (!result.getType().equals(typeToRestrict))
+					if (!result.getType().equals(typeToRestrict.name()))
 						toRemove.add(result);
 				}
 			}

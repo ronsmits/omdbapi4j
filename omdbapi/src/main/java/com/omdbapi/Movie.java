@@ -51,9 +51,14 @@ public class Movie extends RawMovie implements Serializable{
 	 */
 	public float getImdbRating() {
 		String ratingstr = imdbRating.replace(".", "");
-		float rating = Float.parseFloat(ratingstr);
-		rating = rating/10;
-		return rating;
+		try {
+			float rating = Float.parseFloat(ratingstr);
+			rating = rating/10;
+			return rating;
+
+		} catch (NumberFormatException nfe){
+			return -1;
+		}
 	}
 	
 	public long getImdbVotes() {

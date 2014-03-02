@@ -1,7 +1,7 @@
 package com.omdbapi;
 
 public enum MovieType {
-	movie("movie"), episode("episode"), series("series");
+	movie("movie"), episode("episode"), series("series"), game("game");
 	
 	private String typestr;
 	
