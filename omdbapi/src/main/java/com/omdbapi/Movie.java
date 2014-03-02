@@ -63,6 +63,10 @@ public class Movie extends RawMovie implements Serializable{
 	
 	public long getImdbVotes() {
 		String votestr = imdbVotes.replace(",", "");
+		try {
 		return Long.parseLong(votestr);
+		} catch (NumberFormatException nfe){
+			return -1;
+		}
 	}
 }

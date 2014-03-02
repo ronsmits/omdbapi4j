@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.omdbapi</groupId>
 	<artifactId>omdbapi</artifactId>
-	<version>0.4.0</version>
+	<version>0.4.1</version>
 	<name>Open Movie Database API</name>
 	<description>Very thin wrapper around http://www.omdbapi.com</description>
 
