@@ -1,4 +1,4 @@
-package com.omdbapi;
+package org.ronsmits.omdbapi;
 
 import java.io.IOException;
 import java.net.URI;

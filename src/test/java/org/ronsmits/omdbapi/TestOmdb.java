@@ -1,5 +1,10 @@
-package com.omdbapi;
+package org.ronsmits.omdbapi;
 
+import org.ronsmits.omdbapi.RawMovie;
+import org.ronsmits.omdbapi.OmdbConnectionErrorException;
+import org.ronsmits.omdbapi.MovieType;
+import org.ronsmits.omdbapi.OmdbSyntaxErrorException;
+import org.ronsmits.omdbapi.Movie;
 import static org.junit.Assert.*;
 
 import java.util.List;
@@ -9,9 +14,9 @@ import java.util.logging.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.omdbapi.Omdb;
-import com.omdbapi.OmdbMovieNotFoundException;
-import com.omdbapi.SearchResult;
+import org.ronsmits.omdbapi.Omdb;
+import org.ronsmits.omdbapi.OmdbMovieNotFoundException;
+import org.ronsmits.omdbapi.SearchResult;
 
 public class TestOmdb {
 

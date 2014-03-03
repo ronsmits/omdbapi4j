@@ -1,26 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.omdbapi</groupId>
+	<groupId>org.ronsmits</groupId>
 	<artifactId>omdbapi</artifactId>
 	<version>0.4.2-SNAPSHOT</version>
 	<name>Open Movie Database API</name>
 	<description>Very thin wrapper around http://www.omdbapi.com</description>
 
 
-	<distributionManagement>
-		<repository>
-			<id>omdbapi4j.sf.net</id>
-			<layout>default</layout>
-			<name>sf.net repo</name>
-			<url>scp://shell.sourceforge.net/home/project-web/omdbapi4j/htdocs/maven2</url>
-		</repository>
-		<site>
-			<id>omdbapi4j.sf.net</id>
-			<url>scp://shell.sourceforge.net/home/project-web/omdbapi4j/htdocs</url>
-		</site>
-	</distributionManagement>
 	<scm>
-		<developerConnection>scm:git:ssh://ronsmitsnl@git.code.sf.net/p/omdbapi4j/code</developerConnection>
+		<developerConnection>scm:git:https://github.com/ronsmits/omdbapi4j.git</developerConnection>
 	  <tag>HEAD</tag>
   </scm>
 	<dependencies>

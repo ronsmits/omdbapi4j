@@ -1,4 +1,4 @@
-package com.omdbapi;
+package org.ronsmits.omdbapi;
 
 import java.io.Serializable;
 

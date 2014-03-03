@@ -1,4 +1,4 @@
-package com.omdbapi;
+package org.ronsmits.omdbapi;
 
 public enum MovieType {
 	movie("movie"), episode("episode"), series("series"), game("game");

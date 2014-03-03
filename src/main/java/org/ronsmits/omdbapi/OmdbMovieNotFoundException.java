@@ -1,4 +1,4 @@
-package com.omdbapi;
+package org.ronsmits.omdbapi;
 
 public class OmdbMovieNotFoundException extends Exception {
 	private static final long serialVersionUID = 3187323162778334666L;

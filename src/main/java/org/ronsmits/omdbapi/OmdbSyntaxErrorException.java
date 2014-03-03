@@ -1,4 +1,4 @@
-package com.omdbapi;
+package org.ronsmits.omdbapi;
 
 public class OmdbSyntaxErrorException extends Exception {
 	private static final long serialVersionUID = 4600503908695642106L;
