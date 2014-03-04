@@ -1,16 +1,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+    
     <groupId>org.ronsmits</groupId>
     <artifactId>omdbapi</artifactId>
     <version>0.4.2-SNAPSHOT</version>
     <name>Open Movie Database API</name>
     <description>Very thin wrapper around http://www.omdbapi.com</description>
 
-
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+  
     <scm>
-        <developerConnection>scm:git:https://github.com/ronsmits/omdbapi4j.git</developerConnection>
-        <tag>HEAD</tag>
+        <url>https://github.com/ronsmits/omdbapi4j</url>
+        <connection>scm:git:git@github.com:ronsmits/omdbapi4j.git</connection>
+        <developerConnection>scm:git:git@github.com:ronsmits/omdbapi4j.git</developerConnection>
     </scm>
+    
+    <developers>
+        <developer>
+            <id>rs</id>
+            <name>Ron Smits</name>
+            <email>ron.smits@gmail.com</email>
+        </developer>
+    </developers>
     <dependencies>
         <dependency>
             <groupId>org.json</groupId>
@@ -48,6 +71,13 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-jgitflow-plugin</artifactId>
+                <version>1.0-alpha27</version>
+                <configuration>
                 </configuration>
             </plugin>
             <plugin>
@@ -95,7 +125,29 @@
             </plugin>
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <id>release</id>
+            
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <reporting>
         <plugins>
             <plugin>
