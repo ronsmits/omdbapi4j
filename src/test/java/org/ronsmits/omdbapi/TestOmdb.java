@@ -1,4 +1,4 @@
-package org.ronsmits.omdbapi;
+package com.omdbapi;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -29,7 +29,7 @@ public class TestOmdb {
     @Test
     public void testFindBladeRunnerWithYear() throws OmdbMovieNotFoundException, OmdbConnectionErrorException, OmdbSyntaxErrorException {
 	List<SearchResult> search = new Omdb().year(1982).type(MovieType.movie).search("blade runner");
-	assertEquals(1, search.size());
+	assertEquals(3, search.size());
 	assertEquals("Blade Runner", search.get(0).getTitle());
 	assertEquals("1982", search.get(0).getYear());
     }
@@ -60,8 +60,7 @@ public class TestOmdb {
     @Test
     public void testGetBladeRunnerWith2Types() throws OmdbMovieNotFoundException, OmdbConnectionErrorException, OmdbSyntaxErrorException {
 	List<SearchResult> search = new Omdb().type(MovieType.episode).type(MovieType.game).search("blade runner");
-
-	assertEquals(3, search.size());
+	assertEquals(1, search.size());
     }
 
 }

@@ -18,7 +18,8 @@ public class SearchResult implements Serializable{
 	private String year;
 	private String imdbId;
 	private String type;
-	
+	private String poster;
+
 	public String getTitle() {
 		return title;
 	}
@@ -46,4 +47,12 @@ public class SearchResult implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
+	public String getPoster() {
+		return poster;
+	}
+	@XmlElement(name = "Poster")
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+
 }
